@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "public": "client/dist",
+    "rewrites": [
+      {
+        "source": "/forecast",
+        "function": "forecast"
+      }
+    ]
+  }
+}

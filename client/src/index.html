@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" rel="stylesheet" type="text/css" />
+    <style>
+      * {
+        font-family: 'Roboto', sans-serif;
+      }
+
+      .top-bar {
+        background: #999;
+      }
+
+      .loading-pane {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 500px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="weather-redux"></div>
+    <script type="text/javascript" src="webpack-redux.js"></script>
+    <script>
+      WeatherRedux.init({
+        cities: JSON.parse('<%= JSON.stringify(htmlWebpackPlugin.options.cities) %>'),
+        mountElement: document.getElementById('weather-redux'),
+        ioConfig: JSON.parse('<%= JSON.stringify(htmlWebpackPlugin.options.ioConfig) %>')
+      });
+    </script>
+  </body>
+</html>

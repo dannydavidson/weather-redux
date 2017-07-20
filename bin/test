@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+docker build -t weather-redux:latest ./client
+docker run -it --name weather-redux-tester weather-redux:latest npm test
+docker cp weather-redux-tester:/app/test_output.json ./client
+docker rm weather-redux-tester -f >> /dev/null

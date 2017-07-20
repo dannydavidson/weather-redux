@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+rm -rf ./client/dist
+docker build -t weather-redux:latest ./client
+docker run -it --name weather-redux-builder weather-redux:latest
+docker cp weather-redux-builder:/app/dist/. ./client/dist
+docker rm weather-redux-builder -f >> /dev/null
