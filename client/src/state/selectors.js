@@ -42,6 +42,11 @@ export function instance() {
         }
       }
       return [];
+    },
+    getErrorMessage(state) {
+      if (state.hasError) {
+        return state.error && state.error.message;
+      }
     }
   };
 }

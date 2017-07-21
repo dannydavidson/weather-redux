@@ -2,10 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import CircularProgress from 'material-ui/CircularProgress';
+import Snackbar from 'material-ui/Snackbar';
 
 import ForecastDay from '../components/ForecastDay';
 
-export const Component = ({ forecast }) => {
+export const Component = ({ forecast, errorMessage }) => {
+
+  if (errorMessage) {
+    let errorStyle = {backgroundColor: 'rgb(178,34,34)'};
+    return (
+      <Snackbar
+        className="error-snackbar"
+        open={!!errorMessage}
+        message={errorMessage}
+        style={errorStyle}
+      />
+    );
+  }
 
   if (!forecast.length) {
     return (
@@ -37,7 +50,8 @@ export default function({ selectors, connect }) {
   return connect(
     (state) => {
       return {
-        forecast: selectors.getSelectedForecast(state)
+        forecast: selectors.getSelectedForecast(state),
+        errorMessage: selectors.getErrorMessage(state)
       }
     }
   )(Component);
