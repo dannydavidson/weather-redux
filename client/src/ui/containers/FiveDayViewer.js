@@ -43,7 +43,8 @@ export const Component = ({ forecast, errorMessage }) => {
 }
 
 Component.propTypes = {
-  forecast: PropTypes.array.isRequired
+  forecast: PropTypes.array.isRequired,
+  errorMessage: PropTypes.string
 };
 
 export default function({ selectors, connect }) {
